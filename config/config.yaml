@@ -1,0 +1,35 @@
+# distributed training
+nodes: 1
+gpus: 1 # 8 
+nr: 0 # machine nr. in node (0 -- nodes - 1)
+dataparallel: 0 # Use DataParallel instead of DistributedDataParallel
+workers: 8
+dataset_dir: "./datasets" # /mnt/ai-hub/fundus/neurodev
+
+# train options
+seed: 42 
+batch_size: 128 # 1024
+image_size: 224
+start_epoch: 0
+epochs: 100 
+dataset: "CIFAR10" # "Fundus"
+pretrain: True
+
+# model options
+resnet: "resnet18" # vgg16, MobileNetV2, Xception, ResNeXt50, resnet50
+
+projection_dim: 64 # 128
+
+# loss options
+optimizer: "Adam" 
+weight_decay: 1.0e-6 
+temperature: 1.0 
+
+# reload options
+model_path: "save" # set to the directory containing `checkpoint_##.tar` 
+epoch_num: 100 # set to checkpoint number
+reload: False
+
+# logistic regression options
+logistic_batch_size: 256
+logistic_epochs: 500
