@@ -82,13 +82,15 @@ def main(gpu, args):
     else:
         train_sampler = None
 
+    subset_sampler = torch.utils.data.SubsetRandomSampler(range(1024))
+
     train_loader = torch.utils.data.DataLoader(
         train_dataset,
         batch_size=args.batch_size,
         shuffle=(train_sampler is None),
         drop_last=True,
         num_workers=args.workers,
-        sampler=train_sampler,
+        sampler=subset_sampler,
     )
 
     # initialize ResNet
