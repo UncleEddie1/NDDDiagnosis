@@ -1,3 +1,4 @@
+import torch
 import torchvision
 
 class AddGaussianNoise(object):
@@ -6,7 +7,9 @@ class AddGaussianNoise(object):
         self.mean = mean
         
     def __call__(self, tensor):
-        return tensor + torch.randn(tensor.size()) * self.std + self.mean
+        tensor = torchvision.transforms.ToTensor()(tensor)
+        result = tensor + torch.randn(tensor.size()) * float(self.std) + float(self.mean)
+        return torchvision.transforms.ToPILImage()(result)
     
     def __repr__(self):
         return self.__class__.__name__ + '(mean={0}, std={1})'.format(self.mean, self.std)

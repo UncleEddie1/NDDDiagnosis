@@ -21,7 +21,7 @@ resnet: "resnet18" # vgg16, MobileNetV2, Xception, ResNeXt50, resnet50
 projection_dim: 64 # 128
 
 # loss options
-optimizer: "Adam" 
+optimizer: "Adam"
 weight_decay: 1.0e-6 
 temperature: 1.0 
 
