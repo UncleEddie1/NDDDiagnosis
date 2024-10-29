@@ -87,7 +87,7 @@ def main(gpu, args):
     train_loader = torch.utils.data.DataLoader(
         train_dataset,
         batch_size=args.batch_size,
-        shuffle=(train_sampler is None),
+        shuffle=(subset_sampler is None),
         drop_last=True,
         num_workers=args.workers,
         sampler=subset_sampler,
