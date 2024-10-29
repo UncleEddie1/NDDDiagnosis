@@ -25,7 +25,7 @@ class SimCLR(nn.Module):
             nn.Linear(self.n_features, self.n_features, bias=False),
             nn.ReLU(),
             nn.Linear(self.n_features, projection_dim, bias=False),
-        )
+        ).to("cuda:0")
 
     def forward(self, x_i, x_j):
         h_i = self.encoder(x_i)
