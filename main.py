@@ -29,8 +29,8 @@ def train(args, train_loader, model, criterion, optimizer, writer):
     loss_epoch = 0
     for step, ((x_i, x_j), _) in enumerate(train_loader):
         optimizer.zero_grad()
-        x_i = x_i.cuda(non_blocking=True)
-        x_j = x_j.cuda(non_blocking=True)
+        x_i = x_i.cuda(non_blocking=True).to(args.device)
+        x_j = x_j.cuda(non_blocking=True).to(args.device)
 
         # positive pair, with encoding
         h_i, h_j, z_i, z_j = model(x_i, x_j)

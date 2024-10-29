@@ -9,7 +9,7 @@ class AddGaussianNoise(object):
         
     def __call__(self, tensor):
         tensor = torchvision.transforms.ToTensor()(tensor)
-        result = tensor + randn(tensor.size()) * float(self.std) + float(self.mean)
+        result = tensor + randn(tensor.size()) * self.std + self.mean
         return torchvision.transforms.ToPILImage()(result)
     
     def __repr__(self):
